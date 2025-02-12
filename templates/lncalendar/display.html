@@ -1,4 +1,4 @@
-{% extends "public.html" %} {% block page %}
+{% extends "public.html" %} {% block page%}
 <div class="row q-col-gutter-md justify-center">
   <div class="col-12 col-lg-8">
     <q-card class="q-pa-lg">
@@ -80,6 +80,7 @@
           color="primary"
           class="q-mr-md"
           @click="createAppointment"
+          :disable="!formDialog.data.name || !date || !timeSlot"
           >Submit</q-btn
         >
         <q-btn flat color="grey" @click="resetData">Reset</q-btn>
@@ -119,7 +120,7 @@
 </div>
 {% endblock %} {% block scripts %}
 <script>
-  const schedule = {{ schedule | tojson }};
+  const schedule = JSON.parse({{ schedule | tojson }});
   const availableDays = {{ available_days | tojson }};
 </script>
 <script src="{{ static_url_for('lncalendar/static', path='js/utils.js') }}"></script>
