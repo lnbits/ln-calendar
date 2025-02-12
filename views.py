@@ -35,7 +35,7 @@ async def display(request: Request, schedule_id: str):
         "lncalendar/display.html",
         {
             "request": request,
-            "schedule": schedule.dict(),
+            "schedule": schedule.json(),
             "available_days": schedule.availabe_days,
         },
     )
